@@ -1,0 +1,871 @@
+/* ============================================
+   GYM MANAGEMENT SYSTEM - COMPLETE STYLES
+   Login Page + Member Management + All Modules
+   ============================================ */
+
+/* ============================================
+   ROOT VARIABLES
+   ============================================ */
+.root {
+    -fx-primary-color: #2196F3;
+    -fx-success-color: #4CAF50;
+    -fx-warning-color: #FF9800;
+    -fx-danger-color: #F44336;
+    -fx-secondary-color: #9E9E9E;
+    -fx-background-color: #F5F5F5;
+}
+
+/* ============================================
+   MODERN LOGIN PAGE STYLES
+   ============================================ */
+
+.login-container {
+    -fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2);
+}
+
+.login-title {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);
+}
+
+.login-tab-pane {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 10);
+    -fx-padding: 0;
+}
+
+.login-tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #666666;
+    -fx-padding: 15 25 15 25;
+    -fx-background-radius: 15 15 0 0;
+}
+
+.login-tab-pane .tab:selected {
+    -fx-background-color: rgba(33, 150, 243, 0.1);
+    -fx-text-fill: #2196F3;
+    -fx-border-color: transparent transparent #2196F3 transparent;
+    -fx-border-width: 0 0 3 0;
+}
+
+.login-tab-pane .tab:hover {
+    -fx-background-color: rgba(33, 150, 243, 0.05);
+}
+
+.login-tab-pane .tab-header-area {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #E0E0E0 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.login-tab-pane .tab-content-area {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 30 40 40 40;
+}
+
+.login-subtitle {
+    -fx-font-size: 18px;
+    -fx-font-weight: 500;
+    -fx-text-fill: #333333;
+}
+
+.login-input {
+    -fx-font-size: 15px;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-background-color: white;
+    -fx-padding: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);
+}
+
+.login-input:focused {
+    -fx-border-color: #2196F3;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(33, 150, 243, 0.3), 8, 0, 0, 2);
+}
+
+.login-button {
+    -fx-background-color: linear-gradient(to right, #667eea, #764ba2);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-padding: 12 40 12 40;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 10, 0, 0, 5);
+}
+
+.login-button:hover {
+    -fx-background-color: linear-gradient(to right, #764ba2, #667eea);
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.6), 15, 0, 0, 8);
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.login-button:pressed {
+    -fx-background-color: linear-gradient(to right, #5a3e8a, #5566d2);
+    -fx-scale-y: 0.98;
+    -fx-scale-x: 0.98;
+}
+
+.register-button {
+    -fx-background-color: linear-gradient(to right, #f093fb, #f5576c);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-padding: 12 40 12 40;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(240, 147, 251, 0.4), 10, 0, 0, 5);
+}
+
+.register-button:hover {
+    -fx-background-color: linear-gradient(to right, #f5576c, #f093fb);
+    -fx-effect: dropshadow(gaussian, rgba(240, 147, 251, 0.6), 15, 0, 0, 8);
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.register-button:pressed {
+    -fx-background-color: linear-gradient(to right, #d64460, #d87fe3);
+    -fx-scale-y: 0.98;
+    -fx-scale-x: 0.98;
+}
+
+.login-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #555555;
+}
+
+.login-message {
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 10;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.login-message.success {
+    -fx-text-fill: #2E7D32;
+    -fx-background-color: rgba(76, 175, 80, 0.1);
+    -fx-border-color: #4CAF50;
+    -fx-border-width: 1;
+}
+
+.login-message.error {
+    -fx-text-fill: #C62828;
+    -fx-background-color: rgba(244, 67, 54, 0.1);
+    -fx-border-color: #F44336;
+    -fx-border-width: 1;
+}
+
+.required-indicator {
+    -fx-text-fill: #F44336;
+    -fx-font-weight: bold;
+}
+
+.login-help-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: #888888;
+    -fx-font-style: italic;
+}
+
+.login-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.login-scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.login-textarea {
+    -fx-font-size: 14px;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-background-color: white;
+    -fx-padding: 12;
+    -fx-wrap-text: true;
+}
+
+.login-textarea:focused {
+    -fx-border-color: #2196F3;
+    -fx-border-width: 2;
+}
+
+.login-grid {
+    -fx-hgap: 15;
+    -fx-vgap: 15;
+}
+
+/* ============================================
+   MEMBER MANAGEMENT & GENERAL LAYOUT
+   ============================================ */
+
+.header-section {
+    -fx-background-color: white;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 0 0 2 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.content-section {
+    -fx-background-color: #F5F5F5;
+}
+
+.form-section {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 2);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+.page-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #555555;
+}
+
+.required-note {
+    -fx-text-fill: #666666;
+    -fx-font-style: italic;
+}
+
+/* ============================================
+   BUTTONS (General App Buttons)
+   ============================================ */
+
+.button {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+.button:hover {
+    -fx-opacity: 0.9;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+.button:pressed {
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.3), 3, 0, 0, 1);
+    -fx-translate-y: 1;
+}
+
+.btn-primary, .primary-button {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+}
+
+.btn-primary:hover, .primary-button:hover {
+    -fx-background-color: #1976D2;
+}
+
+.btn-success {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}
+
+.btn-success:hover {
+    -fx-background-color: #388E3C;
+}
+
+.btn-warning {
+    -fx-background-color: #FF9800;
+    -fx-text-fill: white;
+}
+
+.btn-warning:hover {
+    -fx-background-color: #F57C00;
+}
+
+.btn-danger, .logout-button {
+    -fx-background-color: #F44336;
+    -fx-text-fill: white;
+}
+
+.btn-danger:hover, .logout-button:hover {
+    -fx-background-color: #D32F2F;
+}
+
+.btn-secondary, .secondary-button {
+    -fx-background-color: #9E9E9E;
+    -fx-text-fill: white;
+}
+
+.btn-secondary:hover, .secondary-button:hover {
+    -fx-background-color: #757575;
+}
+
+/* ============================================
+   INPUT FIELDS (General App)
+   ============================================ */
+
+.text-field, .text-area, .password-field {
+    -fx-background-color: white;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 6 10 6 10;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused, .text-area:focused, .password-field:focused {
+    -fx-border-color: #2196F3;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(33, 150, 243, 0.3), 4, 0, 0, 0);
+}
+
+.search-field {
+    -fx-prompt-text-fill: #999999;
+    -fx-font-size: 14px;
+    -fx-padding: 8 12 8 12;
+}
+
+/* ============================================
+   COMBO BOX
+   ============================================ */
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.combo-box:focused {
+    -fx-border-color: #2196F3;
+    -fx-border-width: 2;
+}
+
+.filter-combo {
+    -fx-font-size: 13px;
+    -fx-pref-width: 150px;
+}
+
+/* ============================================
+   TABLE VIEW - FIXED SELECTION COLORS
+   ============================================ */
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 1);
+}
+
+.table-view .column-header {
+    -fx-background-color: #F5F5F5;
+    -fx-border-color: #E0E0E0;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 8 5 8 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #F5F5F5;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #555555;
+}
+
+.table-row-cell {
+    -fx-cell-size: 35px;
+    -fx-border-color: transparent transparent #F0F0F0 transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #FAFAFA;
+}
+
+.table-row-cell:even {
+    -fx-background-color: white;
+}
+
+/* FIXED: Selected row styling with proper contrast */
+.table-row-cell:selected {
+    -fx-background-color: #2196F3 !important;
+    -fx-background-insets: 0;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: white !important;
+}
+
+.table-row-cell:focused:selected {
+    -fx-background-color: #1976D2 !important;
+}
+
+.table-row-cell:focused:selected .table-cell {
+    -fx-text-fill: white !important;
+}
+
+/* Hover effect - only when NOT selected */
+.table-row-cell:hover:not(:selected) {
+    -fx-background-color: #E3F2FD;
+    -fx-cursor: hand;
+}
+
+.table-cell {
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 13px;
+    -fx-text-fill: #333333;
+}
+
+.table-view .placeholder .label {
+    -fx-text-fill: #999999;
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+}
+
+/* ============================================
+   STATUS LABELS
+   ============================================ */
+
+.status-label {
+    -fx-font-size: 12px;
+    -fx-padding: 5 10 5 10;
+    -fx-background-color: #E3F2FD;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+.status-success {
+    -fx-text-fill: #4CAF50;
+    -fx-font-weight: bold;
+    -fx-background-color: #E8F5E9;
+}
+
+.status-error {
+    -fx-text-fill: #F44336;
+    -fx-font-weight: bold;
+    -fx-background-color: #FFEBEE;
+}
+
+.status-info {
+    -fx-text-fill: #2196F3;
+    -fx-font-weight: bold;
+    -fx-background-color: #E3F2FD;
+}
+
+.stats-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #666666;
+    -fx-padding: 5 10 5 10;
+    -fx-background-color: #F5F5F5;
+    -fx-background-radius: 4;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 4;
+    -fx-border-width: 1;
+}
+
+/* ============================================
+   DATE PICKER
+   ============================================ */
+
+.date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.date-picker .text-field {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.date-picker:focused {
+    -fx-border-color: #2196F3;
+    -fx-border-width: 2;
+}
+
+.date-picker-popup {
+    -fx-background-color: white;
+    -fx-border-color: #E0E0E0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 2);
+}
+
+/* ============================================
+   SEPARATOR
+   ============================================ */
+
+.separator {
+    -fx-background-color: #E0E0E0;
+}
+
+.separator .line {
+    -fx-border-color: #E0E0E0;
+}
+
+/* ============================================
+   SCROLL BAR
+   ============================================ */
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #CCCCCC;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #999999;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: transparent;
+}
+
+/* ============================================
+   SCROLL PANE
+   ============================================ */
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ============================================
+   ALERT DIALOGS
+   ============================================ */
+
+.alert {
+    -fx-background-color: white;
+}
+
+.alert .header-panel {
+    -fx-background-color: #2196F3;
+}
+
+.alert:information .header-panel {
+    -fx-background-color: #2196F3;
+}
+
+.alert:warning .header-panel {
+    -fx-background-color: #FF9800;
+}
+
+.alert:error .header-panel {
+    -fx-background-color: #F44336;
+}
+
+.alert:confirmation .header-panel {
+    -fx-background-color: #4CAF50;
+}
+
+/* ============================================
+   TOOLTIPS
+   ============================================ */
+
+.tooltip {
+    -fx-background-color: #333333;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-background-radius: 4;
+    -fx-padding: 5 10 5 10;
+}
+
+/* ============================================
+   MENU BAR (for Dashboard)
+   ============================================ */
+
+.menu-bar {
+    -fx-background-color: white;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 0 0 2 0;
+}
+
+.menu-bar .label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+.menu-item {
+    -fx-padding: 8 15 8 15;
+}
+
+.menu-item:focused, .menu-item:hover {
+    -fx-background-color: #E3F2FD;
+}
+
+/* ============================================
+   HEADER & WELCOME LABEL
+   ============================================ */
+
+.header {
+    -fx-background-color: white;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 0 0 2 0;
+}
+
+.welcome-label {
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+/* ============================================
+   DASHBOARD SPECIFIC
+   ============================================ */
+
+.dashboard-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 2);
+    -fx-padding: 20;
+}
+
+.dashboard-card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 12, 0, 0, 4);
+    -fx-cursor: hand;
+}
+
+.dashboard-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.dashboard-stat {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2196F3;
+}
+
+.dashboard-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666666;
+}
+
+/* ============================================
+   SMOOTH TRANSITIONS
+   ============================================ */
+
+.button, .login-button, .register-button,
+.login-input, .login-textarea, .table-row-cell,
+.dashboard-card {
+    -fx-transition: all 0.3s ease;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center {
+    -fx-alignment: center;
+}
+
+.text-right {
+    -fx-alignment: center-right;
+}
+
+.text-left {
+    -fx-alignment: center-left;
+}
+
+.spacing-small {
+    -fx-spacing: 5;
+}
+
+.spacing-medium {
+    -fx-spacing: 10;
+}
+
+.spacing-large {
+    -fx-spacing: 20;
+}
+
+.padding-small {
+    -fx-padding: 5;
+}
+
+.padding-medium {
+    -fx-padding: 10;
+}
+
+.padding-large {
+    -fx-padding: 20;
+}
+
+/* ============================================
+   RESPONSIVE (for different screen sizes)
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .form-section {
+        -fx-pref-width: 350px;
+    }
+
+    .page-title {
+        -fx-font-size: 20px;
+    }
+}
+/* ============================================
+   PAYMENT BOOKING PAGE STYLES
+   Add these to your existing style.css file
+   ============================================ */
+
+/* Tab Buttons */
+.tab-buttons {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-padding: 5;
+}
+
+.tab-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #666666;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 20;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 3 0;
+    -fx-border-radius: 0;
+    -fx-background-radius: 6;
+}
+
+.tab-button:hover {
+    -fx-text-fill: #2196F3;
+    -fx-background-color: #F5F5F5;
+}
+
+.tab-button.active-tab {
+    -fx-text-fill: #2196F3;
+    -fx-background-color: #E3F2FD;
+    -fx-border-color: #2196F3;
+}
+
+/* Selected Item Display */
+.selected-display {
+    -fx-background-color: #E3F2FD;
+    -fx-text-fill: #1976D2;
+    -fx-padding: 12 16;
+    -fx-background-radius: 8;
+    -fx-border-color: #2196F3;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+/* Class Details Pane */
+.details-pane {
+    -fx-background-color: #F0F7FF;
+    -fx-background-radius: 8;
+    -fx-border-color: #BBDEFB;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+}
+
+/* Payment Method Buttons */
+.payment-method-button {
+    -fx-background-color: white;
+    -fx-text-fill: #555555;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 12 20;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.payment-method-button:hover {
+    -fx-border-color: #2196F3;
+    -fx-background-color: #F5F5F5;
+}
+
+.payment-method-button:selected {
+    -fx-background-color: #E3F2FD;
+    -fx-text-fill: #2196F3;
+    -fx-border-color: #2196F3;
+    -fx-border-width: 2;
+}
+
+/* Payment History Cards */
+.payment-card {
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-padding: 15;
+}
+
+.payment-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3);
+}
+
+/* Status Badges */
+.status-badge {
+    -fx-padding: 5 10;
+    -fx-background-radius: 12;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.status-badge-completed {
+    -fx-background-color: #E8F5E9;
+    -fx-text-fill: #2E7D32;
+}
+
+.status-badge-pending {
+    -fx-background-color: #FFF3E0;
+    -fx-text-fill: #E65100;
+}
+
+.status-badge-failed {
+    -fx-background-color: #FFEBEE;
+    -fx-text-fill: #C62828;
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymmanagementsystem.controller.TrainerDashboardController">
+   <top>
+      <VBox styleClass="header">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Label fx:id="welcomeLabel" styleClass="welcome-label" text="Welcome, Trainer">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button onAction="#handleRefresh" styleClass="secondary-button" text="Refresh" />
+                  <Button onAction="#handleLogout" styleClass="logout-button" text="Logout" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   
+   <center>
+      <VBox spacing="20.0">
+         <children>
+            <Label styleClass="page-title" text="Trainer Dashboard">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            
+            <HBox spacing="10.0">
+               <children>
+                  <Button onAction="#handleClassScheduling" styleClass="primary-button" text="Manage Classes" />
+               </children>
+            </HBox>
+            
+            <VBox spacing="10.0">
+               <children>
+                  <Label styleClass="section-title" text="My Classes">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  
+                  <TableView fx:id="classesTable" prefHeight="400.0">
+                     <columns>
+                        <TableColumn fx:id="classNameColumn" prefWidth="150.0" text="Class Name" />
+                        <TableColumn fx:id="startTimeColumn" prefWidth="150.0" text="Start Time" />
+                        <TableColumn fx:id="endTimeColumn" prefWidth="150.0" text="End Time" />
+                        <TableColumn fx:id="currentBookingsColumn" prefWidth="100.0" text="Bookings" />
+                        <TableColumn fx:id="maxCapacityColumn" prefWidth="100.0" text="Capacity" />
+                        <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status" />
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>

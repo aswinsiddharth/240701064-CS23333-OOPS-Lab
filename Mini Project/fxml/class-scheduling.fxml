@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gymmanagementsystem.controller.ClassSchedulingController"
+            styleClass="root">
+
+    <!-- Header -->
+    <top>
+        <VBox styleClass="header">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="20.0">
+                    <children>
+                        <Label styleClass="page-title" text="Class Scheduling">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+
+                        <!-- Feedback Label -->
+                        <Label fx:id="feedbackLabel" visible="false" styleClass="feedback-label">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+
+                        <Button fx:id="refreshButton" onAction="#handleRefresh"
+                                styleClass="icon-button" text="🔄 Refresh" />
+                        <Button onAction="#handleBack" styleClass="secondary-button"
+                                text="← Back to Dashboard" />
+                    </children>
+                    <padding>
+                        <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                    </padding>
+                </HBox>
+
+                <!-- Search and Filter Bar -->
+                <HBox spacing="15.0" alignment="CENTER_LEFT" styleClass="filter-bar">
+                    <children>
+                        <Label text="Search:">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="searchField" promptText="Search by name, trainer..."
+                                   prefWidth="250.0" />
+
+                        <Separator orientation="VERTICAL" />
+
+                        <Label text="Date:">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <DatePicker fx:id="filterDatePicker" promptText="Filter by date" />
+
+                        <Label text="Status:">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <ComboBox fx:id="filterStatusComboBox" prefWidth="150.0" />
+
+                        <Button text="Clear Filters" onAction="#handleRefresh"
+                                styleClass="secondary-button-small" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <HBox spacing="20.0" styleClass="content-area">
+            <children>
+                <!-- Classes Table -->
+                <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <Label styleClass="section-title" text="Classes List">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label fx:id="classCountLabel" text="0 classes" styleClass="info-label" />
+                            </children>
+                        </HBox>
+
+                        <TableView fx:id="classesTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+                            <columns>
+                                <TableColumn fx:id="classNameColumn" prefWidth="150.0"
+                                             text="Class Name" />
+                                <TableColumn fx:id="trainerColumn" prefWidth="150.0"
+                                             text="Trainer" />
+                                <TableColumn fx:id="startTimeColumn" prefWidth="170.0"
+                                             text="Start Time" />
+                                <TableColumn fx:id="endTimeColumn" prefWidth="170.0"
+                                             text="End Time" />
+                                <TableColumn fx:id="currentBookingsColumn" prefWidth="90.0"
+                                             text="Bookings" />
+                                <TableColumn fx:id="maxCapacityColumn" prefWidth="80.0"
+                                             text="Capacity" />
+                                <TableColumn fx:id="statusColumn" prefWidth="100.0"
+                                             text="Status" />
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
+
+                        <HBox spacing="10.0" alignment="CENTER_LEFT" styleClass="table-info">
+                            <children>
+                                <Label text="💡 Tip: Double-click a row to view details"
+                                       styleClass="help-text" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label text="🟢 Low   🟡 Medium   🔴 High Occupancy"
+                                       styleClass="help-text" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Form Panel -->
+                <VBox spacing="15.0" prefWidth="400.0" styleClass="form-panel">
+                    <children>
+                        <Label styleClass="section-title" text="Class Details">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+
+                        <Separator />
+
+                        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                                    styleClass="form-scroll">
+                            <content>
+                                <VBox spacing="15.0">
+                                    <children>
+                                        <!-- Class Name -->
+                                        <VBox spacing="5.0">
+                                            <children>
+                                                <Label text="Class Name *" styleClass="field-label" />
+                                                <TextField fx:id="classNameField"
+                                                           promptText="Enter class name"
+                                                           styleClass="input-field" />
+                                            </children>
+                                        </VBox>
+
+                                        <!-- Description -->
+                                        <VBox spacing="5.0">
+                                            <children>
+                                                <Label text="Description" styleClass="field-label" />
+                                                <TextArea fx:id="descriptionField"
+                                                          promptText="Enter class description..."
+                                                          prefRowCount="3"
+                                                          wrapText="true"
+                                                          styleClass="input-field" />
+                                            </children>
+                                        </VBox>
+
+                                        <!-- Trainer -->
+                                        <VBox spacing="5.0">
+                                            <children>
+                                                <Label text="Trainer *" styleClass="field-label" />
+                                                <ComboBox fx:id="trainerComboBox"
+                                                          promptText="Select trainer"
+                                                          maxWidth="Infinity"
+                                                          styleClass="input-field" />
+                                                <Label fx:id="conflictWarningLabel"
+                                                       visible="false"
+                                                       styleClass="warning-label" />
+                                            </children>
+                                        </VBox>
+
+                                        <Separator />
+
+                                        <!-- Date and Time Section -->
+                                        <Label text="Schedule" styleClass="subsection-title">
+                                            <font>
+                                                <Font name="System Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+
+                                        <!-- Start Date/Time -->
+                                        <HBox spacing="10.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Start Date *" styleClass="field-label" />
+                                                        <DatePicker fx:id="startDatePicker"
+                                                                    promptText="Select date"
+                                                                    maxWidth="Infinity"
+                                                                    styleClass="input-field" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" prefWidth="100.0">
+                                                    <children>
+                                                        <Label text="Time *" styleClass="field-label" />
+                                                        <TextField fx:id="startTimeField"
+                                                                   promptText="HH:MM"
+                                                                   styleClass="input-field" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+
+                                        <!-- End Date/Time -->
+                                        <HBox spacing="10.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="End Date *" styleClass="field-label" />
+                                                        <DatePicker fx:id="endDatePicker"
+                                                                    promptText="Select date"
+                                                                    maxWidth="Infinity"
+                                                                    styleClass="input-field" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" prefWidth="100.0">
+                                                    <children>
+                                                        <Label text="Time *" styleClass="field-label" />
+                                                        <TextField fx:id="endTimeField"
+                                                                   promptText="HH:MM"
+                                                                   styleClass="input-field" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+
+                                        <!-- Duration Display -->
+                                        <Label fx:id="durationLabel" styleClass="info-label" />
+
+                                        <Separator />
+
+                                        <!-- Capacity and Status -->
+                                        <HBox spacing="15.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Max Capacity *" styleClass="field-label" />
+                                                        <TextField fx:id="maxCapacityField"
+                                                                   promptText="e.g., 20"
+                                                                   styleClass="input-field" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Status" styleClass="field-label" />
+                                                        <ComboBox fx:id="statusComboBox"
+                                                                  maxWidth="Infinity"
+                                                                  styleClass="input-field" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+
+                                        <Separator />
+
+                                        <!-- Action Buttons -->
+                                        <HBox spacing="10.0" alignment="CENTER">
+                                            <children>
+                                                <Button fx:id="addButton"
+                                                        onAction="#handleAdd"
+                                                        styleClass="success-button"
+                                                        text="➕ Add Class"
+                                                        maxWidth="Infinity"
+                                                        HBox.hgrow="ALWAYS" />
+                                                <Button fx:id="updateButton"
+                                                        onAction="#handleUpdate"
+                                                        styleClass="primary-button"
+                                                        text="💾 Update"
+                                                        disable="true"
+                                                        maxWidth="Infinity"
+                                                        HBox.hgrow="ALWAYS" />
+                                                <Button fx:id="deleteButton"
+                                                        onAction="#handleDelete"
+                                                        styleClass="danger-button"
+                                                        text="🗑 Delete"
+                                                        disable="true"
+                                                        maxWidth="Infinity"
+                                                        HBox.hgrow="ALWAYS" />
+                                            </children>
+                                        </HBox>
+
+                                        <Button fx:id="clearButton"
+                                                onAction="#handleClear"
+                                                styleClass="secondary-button"
+                                                text="Clear Form"
+                                                maxWidth="Infinity" />
+
+                                        <!-- Help Text -->
+                                        <VBox spacing="5.0" styleClass="help-box">
+                                            <children>
+                                                <Label text="* Required fields" styleClass="help-text">
+                                                    <font>
+                                                        <Font name="System Bold" size="11.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="• Time format: HH:MM (24-hour)"
+                                                       styleClass="help-text" />
+                                                <Label text="• Example: 09:00 for 9 AM"
+                                                       styleClass="help-text" />
+                                                <Label text="• Trainer conflicts will be checked automatically"
+                                                       styleClass="help-text" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </padding>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </VBox>
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </HBox>
+    </center>
+</BorderPane>

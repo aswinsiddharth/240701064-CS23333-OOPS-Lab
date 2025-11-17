@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gymmanagementsystem.controller.PaymentBookingController"
+            stylesheets="@../css/style.css">
+
+    <!-- Header -->
+    <top>
+        <VBox styleClass="header">
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Label text="Class Booking &amp; Payment System" styleClass="page-title">
+                    <font>
+                        <Font name="System Bold" size="24"/>
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Back to Dashboard" onAction="#handleBackToDashboard" styleClass="secondary-button"/>
+            </HBox>
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+        </VBox>
+    </top>
+
+    <!-- Center Content -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="20">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <!-- Tab Buttons -->
+                <HBox spacing="5" styleClass="tab-buttons">
+                    <Button fx:id="bookClassTab" text="📅 Book Class" onAction="#showBookClassTab"
+                            styleClass="tab-button,active-tab" prefWidth="200"/>
+                    <Button fx:id="paymentManagementTab" text="💳 Payment Management" onAction="#showPaymentManagementTab"
+                            styleClass="tab-button" prefWidth="200"/>
+                    <Button fx:id="paymentHistoryTab" text="🕒 Payment History" onAction="#showPaymentHistoryTab"
+                            styleClass="tab-button" prefWidth="200"/>
+                </HBox>
+
+                <!-- Book Class Tab Content -->
+                <VBox fx:id="bookClassContent" spacing="20" styleClass="form-section">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+
+                    <Label text="Book a New Class" styleClass="section-title">
+                        <font>
+                            <Font name="System Bold" size="18"/>
+                        </font>
+                    </Label>
+
+                    <!-- Selection Area -->
+                    <GridPane hgap="20" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="50"/>
+                            <ColumnConstraints percentWidth="50"/>
+                        </columnConstraints>
+
+                        <!-- Member Selection -->
+                        <VBox spacing="8" GridPane.columnIndex="0">
+                            <Label fx:id="memberLabel" text="Select Member" styleClass="login-label">
+                                <font>
+                                    <Font name="System Bold" size="14"/>
+                                </font>
+                            </Label>
+                            <ComboBox fx:id="memberComboBox" promptText="Choose a member..."
+                                      prefWidth="400" onAction="#onMemberSelected" styleClass="login-input"/>
+                            <Label fx:id="selectedMemberDisplay" visible="false" managed="false"
+                                   styleClass="selected-display" wrapText="true"/>
+                        </VBox>
+
+                        <!-- Class Selection -->
+                        <VBox spacing="8" GridPane.columnIndex="1">
+                            <Label fx:id="classLabel" text="Select Class" styleClass="login-label">
+                                <font>
+                                    <Font name="System Bold" size="14"/>
+                                </font>
+                            </Label>
+                            <ComboBox fx:id="classComboBox" promptText="Choose a class..."
+                                      prefWidth="400" onAction="#onClassSelected" styleClass="login-input"/>
+                            <Label fx:id="selectedClassDisplay" visible="false" managed="false"
+                                   styleClass="selected-display" wrapText="true"/>
+                        </VBox>
+                    </GridPane>
+
+                    <!-- Class Details -->
+                    <VBox fx:id="classDetailsPane" spacing="15" styleClass="details-pane"
+                          visible="false" managed="false">
+                        <padding>
+                            <Insets top="15" right="15" bottom="15" left="15"/>
+                        </padding>
+
+                        <Label text="Class Details" styleClass="section-title">
+                            <font>
+                                <Font name="System Bold" size="16"/>
+                            </font>
+                        </Label>
+
+                        <GridPane hgap="30" vgap="15">
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="50"/>
+                                <ColumnConstraints percentWidth="50"/>
+                            </columnConstraints>
+
+                            <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                <Label text="Duration" styleClass="login-help-text"/>
+                                <Label fx:id="durationLabel" styleClass="login-label"/>
+                            </VBox>
+
+                            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                <Label text="Schedule" styleClass="login-help-text"/>
+                                <Label fx:id="scheduleLabel" styleClass="login-label"/>
+                            </VBox>
+
+                            <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                <Label text="Class ID" styleClass="login-help-text"/>
+                                <Label fx:id="classIdLabel" styleClass="login-label"/>
+                            </VBox>
+
+                            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <Label text="Available Slots" styleClass="login-help-text"/>
+                                <Label fx:id="availableSlotsLabel" styleClass="login-label"/>
+                            </VBox>
+                        </GridPane>
+
+                        <Separator/>
+
+                        <HBox alignment="CENTER_RIGHT" spacing="20">
+                            <Label text="Total Fee:" styleClass="section-title">
+                                <font>
+                                    <Font name="System Bold" size="18"/>
+                                </font>
+                            </Label>
+                            <Label fx:id="totalFeeLabel" text="₹0" styleClass="dashboard-stat">
+                                <font>
+                                    <Font name="System Bold" size="28"/>
+                                </font>
+                            </Label>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Payment Method Selection -->
+                    <VBox spacing="10">
+                        <Label text="Payment Method" styleClass="login-label">
+                            <font>
+                                <Font name="System Bold" size="14"/>
+                            </font>
+                        </Label>
+                        <HBox spacing="15">
+                            <ToggleButton fx:id="creditCardBtn" text="Credit Card"
+                                          toggleGroup="$paymentMethodGroup" prefWidth="150"
+                                          styleClass="payment-method-button"/>
+                            <ToggleButton fx:id="debitCardBtn" text="Debit Card"
+                                          toggleGroup="$paymentMethodGroup" prefWidth="150"
+                                          styleClass="payment-method-button"/>
+                            <ToggleButton fx:id="cashBtn" text="Cash"
+                                          toggleGroup="$paymentMethodGroup" prefWidth="150"
+                                          styleClass="payment-method-button"/>
+                            <ToggleButton fx:id="upiBtn" text="UPI"
+                                          toggleGroup="$paymentMethodGroup" prefWidth="150"
+                                          styleClass="payment-method-button"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- QR Code Container (NEWLY ADDED) -->
+                    <VBox fx:id="qrCodeContainer" alignment="CENTER" spacing="15"
+                          style="-fx-background-color: #f8f9fa; -fx-padding: 25; -fx-border-color: #4CAF50;
+                                 -fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10;
+                                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 3);"
+                          visible="false" managed="false">
+
+                        <Label text="📱 UPI Payment QR Code"
+                               style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2e7d32;">
+                            <font>
+                                <Font name="System Bold" size="18"/>
+                            </font>
+                        </Label>
+
+                        <VBox alignment="CENTER" spacing="10"
+                              style="-fx-background-color: white; -fx-padding: 15;
+                                     -fx-border-radius: 8; -fx-background-radius: 8;">
+                            <ImageView fx:id="qrCodeImageView" fitWidth="250" fitHeight="250"
+                                       preserveRatio="true"
+                                       style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);"/>
+                        </VBox>
+
+                        <Label fx:id="qrPaymentInfoLabel" textAlignment="CENTER" wrapText="true"
+                               maxWidth="400"
+                               style="-fx-font-size: 13; -fx-text-fill: #555; -fx-font-weight: bold;"/>
+
+                        <Label text="Scan with any UPI app (GPay, PhonePe, Paytm, etc.)"
+                               style="-fx-font-size: 12; -fx-text-fill: #666; -fx-font-style: italic;"/>
+                    </VBox>
+
+                    <!-- Proceed Button -->
+                    <Button fx:id="proceedButton" text="Proceed to Payment"
+                            onAction="#handleProceedToPayment"
+                            styleClass="login-button" prefHeight="45" maxWidth="Infinity"
+                            disable="true">
+                        <font>
+                            <Font name="System Bold" size="16"/>
+                        </font>
+                    </Button>
+                </VBox>
+
+                <!-- Payment Management Tab Content -->
+                <VBox fx:id="paymentManagementContent" spacing="20" styleClass="form-section"
+                      visible="false" managed="false">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+
+                    <Label text="Payment Management" styleClass="section-title">
+                        <font>
+                            <Font name="System Bold" size="18"/>
+                        </font>
+                    </Label>
+
+                    <TableView fx:id="paymentManagementTable" prefHeight="400">
+                        <columns>
+                            <TableColumn fx:id="pmIdColumn" text="ID" prefWidth="60"/>
+                            <TableColumn fx:id="pmMemberColumn" text="Member" prefWidth="150"/>
+                            <TableColumn fx:id="pmClassColumn" text="Class" prefWidth="180"/>
+                            <TableColumn fx:id="pmAmountColumn" text="Amount" prefWidth="100"/>
+                            <TableColumn fx:id="pmMethodColumn" text="Method" prefWidth="120"/>
+                            <TableColumn fx:id="pmStatusColumn" text="Status" prefWidth="100"/>
+                            <TableColumn fx:id="pmDateColumn" text="Date" prefWidth="120"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- Payment History Tab Content -->
+                <VBox fx:id="paymentHistoryContent" spacing="20" styleClass="form-section"
+                      visible="false" managed="false">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+
+                    <Label text="Payment History" styleClass="section-title">
+                        <font>
+                            <Font name="System Bold" size="18"/>
+                        </font>
+                    </Label>
+
+                    <ScrollPane fitToWidth="true" prefHeight="400">
+                        <VBox fx:id="paymentHistoryContainer" spacing="15">
+                            <padding>
+                                <Insets top="10" right="10" bottom="10" left="10"/>
+                            </padding>
+                        </VBox>
+                    </ScrollPane>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

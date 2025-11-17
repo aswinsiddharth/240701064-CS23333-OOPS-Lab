@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gymmanagementsystem.controller.TrainerManagementController"
+            stylesheets="@../css/style.css">
+
+    <!-- Top Section: Title and Back Button -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-section">
+            <padding><Insets top="15" right="20" bottom="15" left="20"/></padding>
+            <Label text="Trainer Management" styleClass="page-title">
+                <font><Font name="System Bold" size="24"/></font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Back to Dashboard" onAction="#handleBack" styleClass="btn-primary"/>
+        </HBox>
+    </top>
+
+    <!-- Center Section: Main Content -->
+    <center>
+        <HBox spacing="15" styleClass="content-section">
+            <padding><Insets top="10" right="20" bottom="20" left="20"/></padding>
+
+            <!-- LEFT SIDE: Trainers List -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Trainers List" styleClass="section-title">
+                        <font><Font name="System Bold" size="16"/></font>
+                    </Label>
+                </HBox>
+
+                <!-- Search and Filter Controls -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="searchField" promptText="🔍 Search by name, email, phone, or specialization..."
+                               HBox.hgrow="ALWAYS" styleClass="search-field"/>
+                    <ComboBox fx:id="filterSpecializationComboBox" promptText="Filter by Specialization"
+                              prefWidth="180" styleClass="filter-combo"/>
+                    <Button text="🔄 Refresh" onAction="#handleRefresh" styleClass="btn-secondary"/>
+                </HBox>
+
+                <!-- Statistics Label -->
+                <Label fx:id="statsLabel" text="Total: 0 | Avg Rate: $0.00 | Min: $0.00 | Max: $0.00"
+                       styleClass="stats-label">
+                    <font><Font size="12"/></font>
+                </Label>
+
+                <!-- Trainers Table -->
+                <TableView fx:id="trainersTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="nameColumn" text="Name" prefWidth="150"/>
+                        <TableColumn fx:id="emailColumn" text="Email" prefWidth="180"/>
+                        <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="120"/>
+                        <TableColumn fx:id="specializationColumn" text="Specialization" prefWidth="140"/>
+                        <TableColumn fx:id="hourlyRateColumn" text="Hourly Rate" prefWidth="100"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+
+                <!-- Status Label -->
+                <Label fx:id="statusLabel" text="Ready" styleClass="status-label">
+                    <font><Font size="12"/></font>
+                </Label>
+            </VBox>
+
+            <!-- RIGHT SIDE: Trainer Details Form -->
+            <VBox spacing="10" prefWidth="400" styleClass="form-section">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+                <Label text="Trainer Details" styleClass="section-title">
+                    <font><Font name="System Bold" size="16"/></font>
+                </Label>
+
+                <Separator/>
+
+                <!-- Scrollable Form Fields -->
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="login-scroll-pane">
+                    <content>
+                        <GridPane hgap="10" vgap="10">
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="35"/>
+                                <ColumnConstraints percentWidth="65"/>
+                            </columnConstraints>
+
+                            <!-- Row 0: First Name -->
+                            <Label text="First Name:*" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                            <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                                       promptText="Enter first name"/>
+
+                            <!-- Row 1: Last Name -->
+                            <Label text="Last Name:*" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                            <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                                       promptText="Enter last name"/>
+
+                            <!-- Row 2: Email -->
+                            <Label text="Email:*" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                            <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                                       promptText="example@email.com"/>
+
+                            <!-- Row 3: Phone -->
+                            <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                            <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                                       promptText="1234567890"/>
+
+                            <!-- Row 4: Username -->
+                            <Label text="Username:*" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                            <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="4"
+                                       promptText="Username"/>
+
+                            <!-- Row 5: Password -->
+                            <Label text="Password:*" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="5"
+                                           promptText="Password"/>
+
+                            <!-- Row 6: Specialization -->
+                            <Label text="Specialization:*" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                            <TextField fx:id="specializationField" GridPane.columnIndex="1" GridPane.rowIndex="6"
+                                       promptText="e.g., Yoga, Cardio, Strength"/>
+
+                            <!-- Row 7: Certifications -->
+                            <Label text="Certifications:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                            <TextArea fx:id="certificationsField" GridPane.columnIndex="1" GridPane.rowIndex="7"
+                                      promptText="List certifications (one per line)..."
+                                      prefRowCount="3" wrapText="true"/>
+
+                            <!-- Row 8: Hourly Rate -->
+                            <Label text="Hourly Rate:* ($)" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                            <TextField fx:id="hourlyRateField" GridPane.columnIndex="1" GridPane.rowIndex="8"
+                                       promptText="e.g., 50.00"/>
+
+                            <!-- Row 9: Availability -->
+                            <Label text="Availability:" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                            <TextArea fx:id="availabilityField" GridPane.columnIndex="1" GridPane.rowIndex="9"
+                                      promptText="e.g., Mon-Fri: 9AM-5PM&#10;Sat: 10AM-2PM"
+                                      prefRowCount="3" wrapText="true"/>
+                        </GridPane>
+                    </content>
+                </ScrollPane>
+
+                <Label text="* Required fields" styleClass="required-note">
+                    <font><Font size="11" name="System Italic"/></font>
+                </Label>
+
+                <Separator/>
+
+                <!-- Action Buttons -->
+                <HBox spacing="10" alignment="CENTER">
+                    <Button fx:id="addButton" text="Add Trainer" onAction="#handleAdd"
+                            styleClass="btn-success" prefWidth="110"/>
+                    <Button fx:id="updateButton" text="Update Trainer" onAction="#handleUpdate"
+                            styleClass="btn-warning" prefWidth="110" disable="true"/>
+                    <Button fx:id="deleteButton" text="Delete Trainer" onAction="#handleDelete"
+                            styleClass="btn-danger" prefWidth="110" disable="true"/>
+                </HBox>
+
+                <Button text="Clear Form" onAction="#handleClear" styleClass="btn-secondary"
+                        prefWidth="330"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

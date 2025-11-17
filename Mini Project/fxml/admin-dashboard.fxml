@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gymmanagementsystem.controller.AdminDashboardController"
+            prefWidth="1400.0" prefHeight="900.0"
+            style="-fx-background-color: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);">
+
+    <!-- Top Header -->
+    <top>
+        <VBox style="-fx-background-color: rgba(255, 255, 255, 0.98); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 0, 5);">
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <padding>
+                    <Insets top="30" right="45" bottom="30" left="45"/>
+                </padding>
+
+                <!-- Logo/Icon Section -->
+                <HBox alignment="CENTER" spacing="15"
+                      style="-fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -fx-background-radius: 12; -fx-padding: 15 25;">
+                    <Label text="🏋️" style="-fx-font-size: 32px;"/>
+                    <VBox>
+                        <Label text="GYM" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        <Label text="PULSE" style="-fx-font-size: 14px; -fx-text-fill: rgba(255,255,255,0.9);"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Welcome Section -->
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label fx:id="welcomeLabel" text="Welcome, System Administrator (Admin)"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+                    <Label text="Manage your gym operations efficiently • Dashboard Overview"
+                           style="-fx-font-size: 14px; -fx-text-fill: #6c757d;"/>
+                </VBox>
+
+                <!-- Quick Stats in Header -->
+                <HBox spacing="15" alignment="CENTER">
+                    <VBox alignment="CENTER" spacing="3"
+                          style="-fx-background-color: #E3F2FD; -fx-background-radius: 10; -fx-padding: 12 18;">
+                        <Label text="156" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2196F3;"/>
+                        <Label text="Members" style="-fx-font-size: 11px; -fx-text-fill: #555;"/>
+                    </VBox>
+
+                    <VBox alignment="CENTER" spacing="3"
+                          style="-fx-background-color: #FCE4EC; -fx-background-radius: 10; -fx-padding: 12 18;">
+                        <Label text="24" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #E91E63;"/>
+                        <Label text="Trainers" style="-fx-font-size: 11px; -fx-text-fill: #555;"/>
+                    </VBox>
+
+                    <VBox alignment="CENTER" spacing="3"
+                          style="-fx-background-color: #E8F5E9; -fx-background-radius: 10; -fx-padding: 12 18;">
+                        <Label text="42" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;"/>
+                        <Label text="Classes" style="-fx-font-size: 11px; -fx-text-fill: #555;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Logout Button -->
+                <Button onAction="#handleLogout"
+                        text="Logout"
+                        style="-fx-background-color: linear-gradient(to right, #e74c3c, #c0392b); -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-background-radius: 25; -fx-cursor: hand; -fx-padding: 14 32; -fx-effect: dropshadow(gaussian, rgba(231,76,60,0.4), 10, 0, 0, 3);">
+                    <font>
+                        <Font name="System Bold" size="15.0"/>
+                    </font>
+                </Button>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true"
+                    style="-fx-background-color: transparent; -fx-background: transparent;"
+                    hbarPolicy="NEVER">
+            <VBox spacing="40.0">
+                <padding>
+                    <Insets top="45" right="50" bottom="50" left="50"/>
+                </padding>
+
+                <!-- Welcome Banner -->
+                <HBox spacing="25" alignment="CENTER">
+                    <VBox spacing="12" HBox.hgrow="ALWAYS"
+                          style="-fx-background-color: rgba(255,255,255,0.2); -fx-background-radius: 18; -fx-padding: 30; -fx-border-color: rgba(255,255,255,0.4); -fx-border-width: 2; -fx-border-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 4);">
+                        <Label text="🎯 Quick Access Dashboard"
+                               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);"/>
+                        <Label text="Navigate through different modules to manage your gym operations efficiently"
+                               wrapText="true"
+                               style="-fx-font-size: 15px; -fx-text-fill: rgba(255,255,255,0.95);"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Dashboard Cards Grid -->
+                <GridPane hgap="35" vgap="35" alignment="CENTER">
+
+                    <!-- Member Management Card -->
+                    <VBox GridPane.columnIndex="0" GridPane.rowIndex="0"
+                          spacing="0"
+                          style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 8);"
+                          prefWidth="320" prefHeight="420" maxWidth="320" maxHeight="420">
+
+                        <!-- Icon Header -->
+                        <VBox alignment="CENTER" spacing="12"
+                              style="-fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -fx-background-radius: 20 20 0 0; -fx-padding: 30 20;">
+                            <Label text="👥" style="-fx-font-size: 72px;"/>
+                            <Label text="MEMBER MANAGEMENT" textAlignment="CENTER"
+                                   style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white; -fx-wrap-text: true;"/>
+                        </VBox>
+
+                        <!-- Card Content -->
+                        <VBox spacing="12" style="-fx-padding: 25;" VBox.vgrow="ALWAYS">
+                            <Label text="Member Management"
+                                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+                            <Label text="Add, edit, and manage gym members. View membership details and track attendance."
+                                   wrapText="true"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #6c757d; -fx-line-spacing: 2;"/>
+
+                            <!-- Stats Row -->
+                            <HBox spacing="15" style="-fx-padding: 10 0;">
+                                <VBox spacing="3" style="-fx-background-color: #F3E5F5; -fx-background-radius: 10; -fx-padding: 12 18;">
+                                    <Label text="156" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #7E57C2;"/>
+                                    <Label text="Active" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                                </VBox>
+                                <VBox spacing="3" style="-fx-background-color: #FCE4EC; -fx-background-radius: 10; -fx-padding: 12 18;">
+                                    <Label text="23" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #E91E63;"/>
+                                    <Label text="New" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                                </VBox>
+                            </HBox>
+
+                            <Region VBox.vgrow="ALWAYS"/>
+
+                            <!-- Action Button -->
+                            <Button onAction="#handleMemberManagement"
+                                    text="Manage Members →"
+                                    maxWidth="Infinity"
+                                    style="-fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 12; -fx-cursor: hand; -fx-padding: 14;">
+                                <font>
+                                    <Font name="System Bold" size="14.0"/>
+                                </font>
+                            </Button>
+                        </VBox>
+                    </VBox>
+
+                    <!-- Trainer Management Card -->
+                    <VBox GridPane.columnIndex="1" GridPane.rowIndex="0"
+                          spacing="0"
+                          style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 8);"
+                          prefWidth="320" prefHeight="420" maxWidth="320" maxHeight="420">
+
+                        <!-- Icon Header -->
+                        <VBox alignment="CENTER" spacing="12"
+                              style="-fx-background-color: linear-gradient(135deg, #f5576c 0%, #f093fb 100%); -fx-background-radius: 20 20 0 0; -fx-padding: 30 20;">
+                            <Label text="💪" style="-fx-font-size: 72px;"/>
+                            <Label text="TRAINER MANAGEMENT" textAlignment="CENTER"
+                                   style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        </VBox>
+
+                        <VBox spacing="12" style="-fx-padding: 25;" VBox.vgrow="ALWAYS">
+                            <Label text="Trainer Management"
+                                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+                            <Label text="Manage trainer profiles, schedules, and specializations. Assign trainers to classes."
+                                   wrapText="true"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #6c757d; -fx-line-spacing: 2;"/>
+
+                            <HBox spacing="15" style="-fx-padding: 10 0;">
+                                <VBox spacing="3" style="-fx-background-color: #FCE4EC; -fx-background-radius: 10; -fx-padding: 12 18;">
+                                    <Label text="24" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #EC407A;"/>
+                                    <Label text="Active" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                                </VBox>
+                                <VBox spacing="3" style="-fx-background-color: #E8F5E9; -fx-background-radius: 10; -fx-padding: 12 18;">
+                                    <Label text="18" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #66BB6A;"/>
+                                    <Label text="Available" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                                </VBox>
+                            </HBox>
+
+                            <Region VBox.vgrow="ALWAYS"/>
+
+                            <Button onAction="#handleTrainerManagement"
+                                    text="Manage Trainers →"
+                                    maxWidth="Infinity"
+                                    style="-fx-background-color: linear-gradient(135deg, #f5576c 0%, #f093fb 100%); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 12; -fx-cursor: hand; -fx-padding: 14;">
+                                <font>
+                                    <Font name="System Bold" size="14.0"/>
+                                </font>
+                            </Button>
+                        </VBox>
+                    </VBox>
+
+                    <!-- Class Scheduling Card -->
+                    <VBox GridPane.columnIndex="0" GridPane.rowIndex="1"
+                          spacing="0"
+                          style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 8);"
+                          prefWidth="320" prefHeight="420" maxWidth="320" maxHeight="420">
+
+                        <!-- Icon Header -->
+                        <VBox alignment="CENTER" spacing="12"
+                              style="-fx-background-color: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); -fx-background-radius: 20 20 0 0; -fx-padding: 30 20;">
+                            <Label text="📅" style="-fx-font-size: 72px;"/>
+                            <Label text="CLASS SCHEDULING" textAlignment="CENTER"
+                                   style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        </VBox>
+
+                        <VBox spacing="12" style="-fx-padding: 25;" VBox.vgrow="ALWAYS">
+                            <Label text="Class Scheduling"
+                                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+                            <Label text="Create and manage training classes. Set schedules, assign trainers, and track capacity."
+                                   wrapText="true"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #6c757d; -fx-line-spacing: 2;"/>
+
+                            <HBox spacing="15" style="-fx-padding: 10 0;">
+                                <VBox spacing="3" style="-fx-background-color: #E1F5FE; -fx-background-radius: 10; -fx-padding: 12 18;">
+                                    <Label text="42" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #039BE5;"/>
+                                    <Label text="Total" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                                </VBox>
+                                <VBox spacing="3" style="-fx-background-color: #FFF3E0; -fx-background-radius: 10; -fx-padding: 12 18;">
+                                    <Label text="12" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #FB8C00;"/>
+                                    <Label text="Today" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                                </VBox>
+                            </HBox>
+
+                            <Region VBox.vgrow="ALWAYS"/>
+
+                            <Button onAction="#handleClassScheduling"
+                                    text="Manage Classes →"
+                                    maxWidth="Infinity"
+                                    style="-fx-background-color: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 12; -fx-cursor: hand; -fx-padding: 14;">
+                                <font>
+                                    <Font name="System Bold" size="14.0"/>
+                                </font>
+                            </Button>
+                        </VBox>
+                    </VBox>
+
+                    <!-- Payment Management Card -->
+                    <VBox GridPane.columnIndex="1" GridPane.rowIndex="1"
+                          spacing="0"
+                          style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 8);"
+                          prefWidth="320" prefHeight="420" maxWidth="320" maxHeight="420">
+
+                        <!-- Icon Header -->
+                        <VBox alignment="CENTER" spacing="12"
+                              style="-fx-background-color: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); -fx-background-radius: 20 20 0 0; -fx-padding: 30 20;">
+                            <Label text="💳" style="-fx-font-size: 72px;"/>
+                            <Label text="PAYMENT MANAGEMENT" textAlignment="CENTER"
+                                   style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        </VBox>
+
+                        <VBox spacing="12" style="-fx-padding: 25;" VBox.vgrow="ALWAYS">
+                            <Label text="Payment Management"
+                                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+                            <Label text="Track payments and generate invoices. Process membership fees and view payment history."
+                                   wrapText="true"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #6c757d; -fx-line-spacing: 2;"/>
+
+                            <HBox spacing="15" style="-fx-padding: 10 0;">
+                                <VBox spacing="3" style="-fx-background-color: #E8F5E9; -fx-background-radius: 10; -fx-padding: 12 18;">
+                                    <Label text="₹2.4L" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #43A047;"/>
+                                    <Label text="Revenue" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                                </VBox>
+                                <VBox spacing="3" style="-fx-background-color: #FFF9C4; -fx-background-radius: 10; -fx-padding: 12 18;">
+                                    <Label text="8" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #F57F17;"/>
+                                    <Label text="Pending" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                                </VBox>
+                            </HBox>
+
+                            <Region VBox.vgrow="ALWAYS"/>
+
+                            <Button onAction="#handlePaymentManagement"
+                                    text="Manage Payments →"
+                                    maxWidth="Infinity"
+                                    style="-fx-background-color: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 12; -fx-cursor: hand; -fx-padding: 14;">
+                                <font>
+                                    <Font name="System Bold" size="14.0"/>
+                                </font>
+                            </Button>
+                        </VBox>
+                    </VBox>
+
+                </GridPane>
+
+                <!-- Bottom Info Banner -->
+                <HBox spacing="20" alignment="CENTER">
+                    <VBox spacing="12" alignment="CENTER"
+                          style="-fx-background-color: rgba(255,255,255,0.98); -fx-background-radius: 18; -fx-padding: 35; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 0, 5);"
+                          prefWidth="700">
+                        <Label text="💡 Pro Tip"
+                               style="-fx-font-size: 19px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+                        <Label text="Use the quick stats in the header to get a real-time overview of your gym operations. Click on any card above to access detailed management features."
+                               wrapText="true"
+                               textAlignment="CENTER"
+                               style="-fx-font-size: 14px; -fx-text-fill: #6c757d; -fx-line-spacing: 3;"/>
+                    </VBox>
+                </HBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

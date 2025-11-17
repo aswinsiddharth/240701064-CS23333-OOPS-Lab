@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gymmanagementsystem.controller.MemberManagementController"
+            stylesheets="@../css/style.css">
+
+    <!-- Top Section: Title and Back Button -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header-section">
+            <padding><Insets top="15" right="20" bottom="15" left="20"/></padding>
+            <Label text="Member Management" styleClass="page-title">
+                <font><Font name="System Bold" size="24"/></font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Back to Dashboard" onAction="#handleBack" styleClass="btn-primary"/>
+        </HBox>
+    </top>
+
+    <!-- Center Section: Main Content -->
+    <center>
+        <HBox spacing="15" styleClass="content-section">
+            <padding><Insets top="10" right="20" bottom="20" left="20"/></padding>
+
+            <!-- LEFT SIDE: Members List -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label text="Members List" styleClass="section-title">
+                        <font><Font name="System Bold" size="16"/></font>
+                    </Label>
+                </HBox>
+
+                <!-- Search and Filter Controls -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="searchField" promptText="🔍 Search by name, email, or phone..."
+                               HBox.hgrow="ALWAYS" styleClass="search-field"/>
+                    <ComboBox fx:id="filterStatusComboBox" promptText="Filter by Status"
+                              prefWidth="150" styleClass="filter-combo"/>
+                    <Button text="🔄 Refresh" onAction="#handleRefresh" styleClass="btn-secondary"/>
+                </HBox>
+
+                <!-- Statistics Label -->
+                <Label fx:id="statsLabel" text="Total: 0 | Active: 0 | Expired: 0 | Suspended: 0"
+                       styleClass="stats-label">
+                    <font><Font size="12"/></font>
+                </Label>
+
+                <!-- Members Table -->
+                <TableView fx:id="membersTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="nameColumn" text="Name" prefWidth="150"/>
+                        <TableColumn fx:id="emailColumn" text="Email" prefWidth="180"/>
+                        <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="120"/>
+                        <TableColumn fx:id="membershipStatusColumn" text="Status" prefWidth="100"/>
+                        <TableColumn fx:id="membershipEndDateColumn" text="End Date" prefWidth="100"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+
+                <!-- Status Label -->
+                <Label fx:id="statusLabel" text="Ready" styleClass="status-label">
+                    <font><Font size="12"/></font>
+                </Label>
+            </VBox>
+
+            <!-- RIGHT SIDE: Member Details Form -->
+            <VBox spacing="10" prefWidth="400" styleClass="form-section">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+                <Label text="Member Details" styleClass="section-title">
+                    <font><Font name="System Bold" size="16"/></font>
+                </Label>
+
+                <Separator/>
+
+                <!-- Form Fields -->
+                <GridPane hgap="10" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="35"/>
+                        <ColumnConstraints percentWidth="65"/>
+                    </columnConstraints>
+
+                    <!-- Row 0: First Name -->
+                    <Label text="First Name:*" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                               promptText="Enter first name"/>
+
+                    <!-- Row 1: Last Name -->
+                    <Label text="Last Name:*" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                               promptText="Enter last name"/>
+
+                    <!-- Row 2: Email -->
+                    <Label text="Email:*" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                               promptText="example@email.com"/>
+
+                    <!-- Row 3: Phone -->
+                    <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                               promptText="1234567890"/>
+
+                    <!-- Row 4: Username -->
+                    <Label text="Username:*" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="4"
+                               promptText="Username"/>
+
+                    <!-- Row 5: Password -->
+                    <Label text="Password:*" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="5"
+                                   promptText="Password"/>
+
+                    <!-- Row 6: Emergency Contact -->
+                    <Label text="Emergency Contact:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <TextField fx:id="emergencyContactField" GridPane.columnIndex="1" GridPane.rowIndex="6"
+                               promptText="Emergency contact number"/>
+
+                    <!-- Row 7: Medical Conditions -->
+                    <Label text="Medical Conditions:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                    <TextArea fx:id="medicalConditionsField" GridPane.columnIndex="1" GridPane.rowIndex="7"
+                              promptText="Any medical conditions..." prefRowCount="3" wrapText="true"/>
+
+                    <!-- Row 8: Membership Status -->
+                    <Label text="Membership Status:*" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                    <ComboBox fx:id="membershipStatusComboBox" GridPane.columnIndex="1" GridPane.rowIndex="8"
+                              prefWidth="200"/>
+
+                    <!-- Row 9: Membership End Date -->
+                    <Label text="Membership End Date:*" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                    <DatePicker fx:id="membershipEndDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="9"
+                                prefWidth="200"/>
+                </GridPane>
+
+                <Label text="* Required fields" styleClass="required-note">
+                    <font><Font size="11" name="System Italic"/></font>
+                </Label>
+
+                <Separator/>
+
+                <!-- Action Buttons -->
+                <HBox spacing="10" alignment="CENTER">
+                    <Button fx:id="addButton" text="Add Member" onAction="#handleAdd"
+                            styleClass="btn-success" prefWidth="110"/>
+                    <Button fx:id="updateButton" text="Update Member" onAction="#handleUpdate"
+                            styleClass="btn-warning" prefWidth="110" disable="true"/>
+                    <Button fx:id="deleteButton" text="Delete Member" onAction="#handleDelete"
+                            styleClass="btn-danger" prefWidth="110" disable="true"/>
+                </HBox>
+
+                <Button text="Clear Form" onAction="#handleClear" styleClass="btn-secondary"
+                        prefWidth="330"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

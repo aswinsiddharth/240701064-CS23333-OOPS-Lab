@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymmanagementsystem.controller.MemberDashboardController">
+    <top>
+        <VBox styleClass="header">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="20.0">
+                    <children>
+                        <Label fx:id="welcomeLabel" styleClass="welcome-label" text="Welcome, Member">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button onAction="#handleRefresh" styleClass="secondary-button" text="Refresh" />
+                        <Button onAction="#handleLogout" styleClass="logout-button" text="Logout" />
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <content>
+                <VBox spacing="20.0">
+                    <children>
+                        <Label styleClass="page-title" text="Member Dashboard">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <!-- ===================================
+     ADD THIS BUTTON to member-dashboard.fxml
+     Place it BEFORE the "My Booked Classes Section"
+     =================================== -->
+
+                        <!-- Book & Pay Button Section (Add after page title) -->
+                        <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 15; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-border-width: 1;">
+                            <children>
+                                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                                    <Label text="Book Classes with Payment" styleClass="section-title">
+                                        <font>
+                                            <Font name="System Bold" size="16.0" />
+                                        </font>
+                                    </Label>
+                                    <Label text="Book and pay for classes in one simple process" styleClass="login-help-text">
+                                        <font>
+                                            <Font size="13.0" />
+                                        </font>
+                                    </Label>
+                                </VBox>
+                                <Button onAction="#handleBookAndPay" styleClass="login-button" text="📅 Book &amp; Pay Now" prefWidth="180" prefHeight="40">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </HBox>
+
+                        <!-- Or for a simpler version, just add this button above "Available Classes": -->
+
+                        <Button onAction="#handleBookAndPay" styleClass="primary-button" text="📅 Book Class with Payment" prefHeight="40">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Button>
+
+                        <!-- My Booked Classes Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <Label styleClass="section-title" text="My Booked Classes">
+                                            <font>
+                                                <Font name="System Bold" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Button onAction="#handleCancelBooking" styleClass="logout-button" text="Cancel Booking" />
+                                    </children>
+                                </HBox>
+
+                                <TableView fx:id="bookedClassesTable" prefHeight="250.0">
+                                    <columns>
+                                        <TableColumn fx:id="bookedClassNameColumn" prefWidth="150.0" text="Class Name" />
+                                        <TableColumn fx:id="bookedTrainerColumn" prefWidth="150.0" text="Trainer" />
+                                        <TableColumn fx:id="bookedStartTimeColumn" prefWidth="150.0" text="Start Time" />
+                                        <TableColumn fx:id="bookedEndTimeColumn" prefWidth="150.0" text="End Time" />
+                                        <TableColumn fx:id="bookedStatusColumn" prefWidth="100.0" text="Status" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+
+                        <!-- Available Classes Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <Label styleClass="section-title" text="Available Classes">
+                                            <font>
+                                                <Font name="System Bold" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Button onAction="#handleBookClass" styleClass="primary-button" text="Book Selected Class" />
+                                    </children>
+                                </HBox>
+
+                                <TableView fx:id="availableClassesTable" prefHeight="250.0">
+                                    <columns>
+                                        <TableColumn fx:id="classNameColumn" prefWidth="150.0" text="Class Name" />
+                                        <TableColumn fx:id="trainerColumn" prefWidth="150.0" text="Trainer" />
+                                        <TableColumn fx:id="startTimeColumn" prefWidth="150.0" text="Start Time" />
+                                        <TableColumn fx:id="endTimeColumn" prefWidth="150.0" text="End Time" />
+                                        <TableColumn fx:id="availableSpotsColumn" prefWidth="100.0" text="Available Spots" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+
+                        <!-- Payment History Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <Label styleClass="section-title" text="Payment History">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+
+                                <TableView fx:id="paymentsTable" prefHeight="250.0">
+                                    <columns>
+                                        <TableColumn fx:id="paymentDateColumn" prefWidth="150.0" text="Payment Date" />
+                                        <TableColumn fx:id="amountColumn" prefWidth="100.0" text="Amount" />
+                                        <TableColumn fx:id="paymentTypeColumn" prefWidth="120.0" text="Type" />
+                                        <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

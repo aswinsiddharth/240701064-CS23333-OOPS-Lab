@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+
+<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.gymmanagementsystem.controller.LoginController"
+           prefHeight="850.0" prefWidth="1400.0" minHeight="600.0" minWidth="1000.0"
+           styleClass="login-container">
+
+    <!-- Overlay for better contrast -->
+    <Region style="-fx-background-color: rgba(0, 0, 0, 0.2);" />
+
+    <!-- Main Content Container -->
+    <HBox alignment="CENTER" spacing="0" maxWidth="1300.0" StackPane.alignment="CENTER">
+
+        <!-- Left Side - Modern Branding Panel -->
+        <VBox alignment="CENTER" spacing="35.0" prefWidth="600.0" prefHeight="750.0"
+              style="-fx-background-color: rgba(255, 255, 255, 0.15);
+                     -fx-background-radius: 25 0 0 25;
+                     -fx-border-color: rgba(255, 255, 255, 0.3);
+                     -fx-border-width: 2 0 2 2;
+                     -fx-border-radius: 25 0 0 25;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 30, 0, -5, 5);">
+            <children>
+                <!-- Logo Icon - EMOJI VERSION (Always works!) -->
+                <StackPane style="-fx-background-color: rgba(255, 255, 255, 0.95);
+                                  -fx-background-radius: 70;
+                                  -fx-padding: 20;
+                                  -fx-min-width: 140;
+                                  -fx-min-height: 140;
+                                  -fx-max-width: 140;
+                                  -fx-max-height: 140;
+                                  -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.5), 25, 0, 0, 5);">
+                    <Label text="🏋️" style="-fx-font-size: 80px;"/>
+                </StackPane>
+
+                <!-- Brand Text -->
+                <VBox alignment="CENTER" spacing="10">
+                    <Label text="GYM MASTER" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 42px; -fx-letter-spacing: 3;">
+                        <effect>
+                            <DropShadow color="rgba(0,0,0,0.5)" radius="10" offsetY="3"/>
+                        </effect>
+                    </Label>
+                    <Label text="MANAGEMENT SYSTEM" style="-fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 20px; -fx-letter-spacing: 4;">
+                        <effect>
+                            <DropShadow color="rgba(0,0,0,0.4)" radius="8" offsetY="2"/>
+                        </effect>
+                    </Label>
+                </VBox>
+
+                <!-- Tagline -->
+                <Label text="Transform Your Body, Elevate Your Life"
+                       textAlignment="CENTER" wrapText="true" maxWidth="450"
+                       style="-fx-text-fill: rgba(255, 255, 255, 0.95); -fx-font-size: 17px; -fx-font-style: italic;">
+                    <effect>
+                        <DropShadow color="rgba(0,0,0,0.3)" radius="5" offsetY="2"/>
+                    </effect>
+                </Label>
+
+                <!-- Feature Icons Grid - EMOJI VERSION -->
+                <GridPane hgap="30" vgap="25" alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                    </columnConstraints>
+
+                    <!-- Feature 1 - Expert Training -->
+                    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <StackPane style="-fx-background-color: rgba(255, 255, 255, 0.25);
+                                          -fx-background-radius: 45;
+                                          -fx-min-width: 90;
+                                          -fx-min-height: 90;
+                                          -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);">
+                            <Label text="💪" style="-fx-font-size: 45px;"/>
+                        </StackPane>
+                        <Label text="Expert Training" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;">
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.3)" radius="3"/>
+                            </effect>
+                        </Label>
+                    </VBox>
+
+                    <!-- Feature 2 - Modern Equipment -->
+                    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <StackPane style="-fx-background-color: rgba(255, 255, 255, 0.25);
+                                          -fx-background-radius: 45;
+                                          -fx-min-width: 90;
+                                          -fx-min-height: 90;
+                                          -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);">
+                            <Label text="🏃" style="-fx-font-size: 45px;"/>
+                        </StackPane>
+                        <Label text="Modern Equipment" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;">
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.3)" radius="3"/>
+                            </effect>
+                        </Label>
+                    </VBox>
+
+                    <!-- Feature 3 - Nutrition Plans -->
+                    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <StackPane style="-fx-background-color: rgba(255, 255, 255, 0.25);
+                                          -fx-background-radius: 45;
+                                          -fx-min-width: 90;
+                                          -fx-min-height: 90;
+                                          -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);">
+                            <Label text="🥗" style="-fx-font-size: 45px;"/>
+                        </StackPane>
+                        <Label text="Nutrition Plans" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;">
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.3)" radius="3"/>
+                            </effect>
+                        </Label>
+                    </VBox>
+
+                    <!-- Feature 4 - 24/7 Access -->
+                    <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <StackPane style="-fx-background-color: rgba(255, 255, 255, 0.25);
+                                          -fx-background-radius: 45;
+                                          -fx-min-width: 90;
+                                          -fx-min-height: 90;
+                                          -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);">
+                            <Label text="⏰" style="-fx-font-size: 45px;"/>
+                        </StackPane>
+                        <Label text="24/7 Access" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;">
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.3)" radius="3"/>
+                            </effect>
+                        </Label>
+                    </VBox>
+                </GridPane>
+
+                <!-- Stats Section -->
+                <HBox alignment="CENTER" spacing="40" style="-fx-padding: 20 0 0 0;">
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="5000+" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;">
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.3)" radius="5"/>
+                            </effect>
+                        </Label>
+                        <Label text="Members" style="-fx-text-fill: rgba(255, 255, 255, 0.95); -fx-font-size: 14px; -fx-font-weight: 600;">
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.3)" radius="3"/>
+                            </effect>
+                        </Label>
+                    </VBox>
+                    <Separator orientation="VERTICAL" prefHeight="60" style="-fx-background-color: rgba(255, 255, 255, 0.4);" />
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="150+" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;">
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.3)" radius="5"/>
+                            </effect>
+                        </Label>
+                        <Label text="Classes" style="-fx-text-fill: rgba(255, 255, 255, 0.95); -fx-font-size: 14px; -fx-font-weight: 600;">
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.3)" radius="3"/>
+                            </effect>
+                        </Label>
+                    </VBox>
+                    <Separator orientation="VERTICAL" prefHeight="60" style="-fx-background-color: rgba(255, 255, 255, 0.4);" />
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="50+" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;">
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.3)" radius="5"/>
+                            </effect>
+                        </Label>
+                        <Label text="Trainers" style="-fx-text-fill: rgba(255, 255, 255, 0.95); -fx-font-size: 14px; -fx-font-weight: 600;">
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.3)" radius="3"/>
+                            </effect>
+                        </Label>
+                    </VBox>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="40" bottom="40" left="40" right="40" />
+            </padding>
+        </VBox>
+
+        <!-- Right Side - Login/Register Form -->
+        <VBox alignment="CENTER" spacing="20.0" prefWidth="650.0" prefHeight="750.0">
+            <children>
+                <TabPane fx:id="tabPane" prefHeight="750.0" prefWidth="800.0"
+                         styleClass="login-tab-pane" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <!-- Login Tab -->
+                        <Tab text="Login">
+                            <content>
+                                <VBox alignment="CENTER" spacing="25.0">
+                                    <children>
+                                        <!-- User Icon - EMOJI VERSION -->
+                                        <StackPane style="-fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                                          -fx-background-radius: 50;
+                                                          -fx-min-width: 100;
+                                                          -fx-min-height: 100;
+                                                          -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 15, 0, 0, 5);">
+                                            <Label text="👤" style="-fx-font-size: 50px;"/>
+                                        </StackPane>
+
+                                        <Label styleClass="login-subtitle" text="Welcome Back!">
+                                            <font>
+                                                <Font name="System Bold" size="28.0" />
+                                            </font>
+                                        </Label>
+
+                                        <Label text="Login to access your account" style="-fx-text-fill: #888888; -fx-font-size: 15px;" />
+
+                                        <VBox spacing="20" prefWidth="450" style="-fx-padding: 20 0 0 0;">
+                                            <!-- Username Field -->
+                                            <VBox spacing="8">
+                                                <Label text="Username" styleClass="login-label" />
+                                                <HBox spacing="12" alignment="CENTER_LEFT"
+                                                      style="-fx-background-color: #F8F9FA; -fx-background-radius: 10; -fx-padding: 8 15; -fx-border-color: #E0E0E0; -fx-border-width: 2; -fx-border-radius: 10;">
+                                                    <Label text="👤" style="-fx-font-size: 20px;"/>
+                                                    <TextField fx:id="usernameField" promptText="Enter your username"
+                                                               HBox.hgrow="ALWAYS"
+                                                               style="-fx-background-color: transparent; -fx-border-width: 0; -fx-font-size: 14px;" />
+                                                </HBox>
+                                            </VBox>
+
+                                            <!-- Password Field -->
+                                            <VBox spacing="8">
+                                                <Label text="Password" styleClass="login-label" />
+                                                <HBox spacing="12" alignment="CENTER_LEFT"
+                                                      style="-fx-background-color: #F8F9FA; -fx-background-radius: 10; -fx-padding: 8 15; -fx-border-color: #E0E0E0; -fx-border-width: 2; -fx-border-radius: 10;">
+                                                    <Label text="🔒" style="-fx-font-size: 20px;"/>
+                                                    <PasswordField fx:id="passwordField" promptText="Enter your password"
+                                                                   HBox.hgrow="ALWAYS"
+                                                                   style="-fx-background-color: transparent; -fx-border-width: 0; -fx-font-size: 14px;" />
+                                                </HBox>
+                                            </VBox>
+
+                                            <!-- Message Label -->
+                                            <Label fx:id="messageLabel" styleClass="login-message" wrapText="true" />
+
+                                            <!-- Login Button -->
+                                            <Button fx:id="loginButton" onAction="#handleLogin" prefWidth="450.0"
+                                                    styleClass="login-button" text="LOGIN" prefHeight="50">
+                                                <font>
+                                                    <Font name="System Bold" size="16.0" />
+                                                </font>
+                                            </Button>
+
+                                            <!-- Help Text -->
+                                            <VBox alignment="CENTER" spacing="8">
+                                                <Label text="Don't have an account?"
+                                                       style="-fx-text-fill: #888888; -fx-font-size: 13px;"/>
+                                                <Label text="Click 'Register as Member' tab above ↑"
+                                                       style="-fx-text-fill: #667eea; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+                                            </VBox>
+                                        </VBox>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="35.0" left="30.0" right="30.0" top="30.0" />
+                                    </padding>
+                                </VBox>
+                            </content>
+                        </Tab>
+
+                        <!-- Register Tab -->
+                        <Tab text="Register as Member">
+                            <content>
+                                <ScrollPane fitToWidth="true" styleClass="login-scroll-pane">
+                                    <content>
+                                        <VBox alignment="CENTER" spacing="20.0">
+                                            <children>
+                                                <!-- Register Icon - EMOJI VERSION -->
+                                                <StackPane style="-fx-background-color: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                                                                  -fx-background-radius: 45;
+                                                                  -fx-min-width: 90;
+                                                                  -fx-min-height: 90;
+                                                                  -fx-effect: dropshadow(gaussian, rgba(240, 147, 251, 0.4), 15, 0, 0, 5);">
+                                                    <Label text="📝" style="-fx-font-size: 45px;"/>
+                                                </StackPane>
+
+                                                <Label styleClass="login-subtitle" text="Join Our Community">
+                                                    <font>
+                                                        <Font name="System Bold" size="26.0" />
+                                                    </font>
+                                                </Label>
+
+                                                <Label text="Create your account to get started" style="-fx-text-fill: #888888; -fx-font-size: 14px;" />
+
+                                                <GridPane hgap="15.0" vgap="18.0" alignment="CENTER" styleClass="login-grid" prefWidth="500">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints minWidth="140.0" />
+                                                        <ColumnConstraints minWidth="300.0" prefWidth="300.0" />
+                                                    </columnConstraints>
+
+                                                    <!-- First Name -->
+                                                    <Label styleClass="login-label" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                                        <text>First Name: </text>
+                                                        <graphic>
+                                                            <Label text="*" styleClass="required-indicator" />
+                                                        </graphic>
+                                                    </Label>
+                                                    <TextField fx:id="regFirstNameField" promptText="Enter first name" styleClass="login-input" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                                                    <!-- Last Name -->
+                                                    <Label styleClass="login-label" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                                        <text>Last Name: </text>
+                                                        <graphic>
+                                                            <Label text="*" styleClass="required-indicator" />
+                                                        </graphic>
+                                                    </Label>
+                                                    <TextField fx:id="regLastNameField" promptText="Enter last name" styleClass="login-input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                                    <!-- Email -->
+                                                    <Label styleClass="login-label" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                                                        <text>Email: </text>
+                                                        <graphic>
+                                                            <Label text="*" styleClass="required-indicator" />
+                                                        </graphic>
+                                                    </Label>
+                                                    <TextField fx:id="regEmailField" promptText="your.email@example.com" styleClass="login-input" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                                    <!-- Phone -->
+                                                    <Label text="Phone:" styleClass="login-label" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                                    <TextField fx:id="regPhoneField" promptText="+1 (555) 000-0000" styleClass="login-input" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                                                    <!-- Username -->
+                                                    <Label styleClass="login-label" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                                                        <text>Username: </text>
+                                                        <graphic>
+                                                            <Label text="*" styleClass="required-indicator" />
+                                                        </graphic>
+                                                    </Label>
+                                                    <TextField fx:id="regUsernameField" promptText="Choose a username" styleClass="login-input" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                                                    <!-- Password -->
+                                                    <Label styleClass="login-label" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                                                        <text>Password: </text>
+                                                        <graphic>
+                                                            <Label text="*" styleClass="required-indicator" />
+                                                        </graphic>
+                                                    </Label>
+                                                    <PasswordField fx:id="regPasswordField" promptText="Create a strong password" styleClass="login-input" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                                                    <!-- Emergency Contact -->
+                                                    <Label text="Emergency Contact:" styleClass="login-label" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                                                    <TextField fx:id="regEmergencyContactField" promptText="Emergency contact number" styleClass="login-input" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                                                    <!-- Medical Conditions -->
+                                                    <Label text="Medical Conditions:" styleClass="login-label" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                                                    <TextArea fx:id="regMedicalConditionsField" promptText="List any medical conditions..." prefRowCount="2" styleClass="login-textarea" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                </GridPane>
+
+                                                <!-- Register Button -->
+                                                <Button fx:id="registerButton" onAction="#handleRegister" prefWidth="350.0"
+                                                        styleClass="register-button" text="CREATE ACCOUNT" prefHeight="50">
+                                                    <font>
+                                                        <Font name="System Bold" size="16.0" />
+                                                    </font>
+                                                </Button>
+
+                                                <!-- Required Note -->
+                                                <Label text="* Required fields" styleClass="required-note"
+                                                       style="-fx-text-fill: #F44336; -fx-font-size: 12px; -fx-font-style: italic;"/>
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="30.0" left="30.0" right="30.0" top="20.0" />
+                                            </padding>
+                                        </VBox>
+                                    </content>
+                                </ScrollPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </children>
+            <padding>
+                <Insets top="25" bottom="25" left="25" right="25" />
+            </padding>
+        </VBox>
+    </HBox>
+</StackPane>

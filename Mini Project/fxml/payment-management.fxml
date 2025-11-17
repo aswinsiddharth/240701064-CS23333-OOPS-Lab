@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gymmanagementsystem.controller.PaymentManagementController">
+
+    <top>
+        <VBox styleClass="header">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="20.0">
+                    <children>
+                        <Label styleClass="page-title" text="💳 Payment Management">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button onAction="#handleBack" styleClass="secondary-button" text="← Back to Dashboard" />
+                    </children>
+                    <padding>
+                        <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                    </padding>
+                </HBox>
+
+                <!-- Statistics Dashboard -->
+                <HBox spacing="15.0" alignment="CENTER" styleClass="stats-container">
+                    <children>
+                        <VBox alignment="CENTER" spacing="5.0" styleClass="stat-box" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Total Revenue" styleClass="stat-label" />
+                                <Label fx:id="totalRevenueLabel" text="₹0.00" styleClass="stat-value">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                            </padding>
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="5.0" styleClass="stat-box success-bg" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Completed Payments" styleClass="stat-label" />
+                                <Label fx:id="completedPaymentsLabel" text="0" styleClass="stat-value">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                            </padding>
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="5.0" styleClass="stat-box warning-bg" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Pending Payments" styleClass="stat-label" />
+                                <Label fx:id="pendingPaymentsLabel" text="0" styleClass="stat-value">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                            </padding>
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="5.0" styleClass="stat-box error-bg" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Total Refunds" styleClass="stat-label" />
+                                <Label fx:id="refundsLabel" text="₹0.00" styleClass="stat-value">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="15.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox spacing="20.0">
+            <children>
+                <!-- Left Panel: Payments Table -->
+                <VBox spacing="15.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <!-- Search and Filter Section -->
+                        <VBox spacing="10.0" styleClass="filter-section">
+                            <children>
+                                <Label styleClass="section-title" text="🔍 Search &amp; Filter">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <TextField fx:id="searchField" promptText="Search by name, transaction ID, or invoice..."
+                                                   HBox.hgrow="ALWAYS" />
+                                        <DatePicker fx:id="startDatePicker" promptText="Start Date" prefWidth="150.0" />
+                                        <DatePicker fx:id="endDatePicker" promptText="End Date" prefWidth="150.0" />
+                                        <Button text="Filter" onAction="#handleFilterByDate" styleClass="primary-button" />
+                                        <Button text="Clear" onAction="#handleClearFilters" styleClass="secondary-button" />
+                                    </children>
+                                </HBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </VBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <Label styleClass="section-title" text="📋 Payments List">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+                                <Region HBox.hgrow="ALWAYS" />
+
+                                <!-- Generate Report Button - NEW! -->
+                                <Button onAction="#handleGenerateReport"
+                                        styleClass="primary-button"
+                                        text="📊 Generate Report"
+                                        style="-fx-background-color: #4CAF50; -fx-text-fill: white;">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Button>
+
+                                <!-- Generate Receipt Button -->
+                                <Button onAction="#handleGenerateReceipt"
+                                        styleClass="success-button"
+                                        text="📄 Generate Receipt" />
+                            </children>
+                        </HBox>
+
+                        <TableView fx:id="paymentsTable" prefHeight="500.0" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="memberColumn" prefWidth="130.0" text="Member" />
+                                <TableColumn fx:id="transactionIdColumn" prefWidth="120.0" text="Transaction ID" />
+                                <TableColumn fx:id="amountColumn" prefWidth="90.0" text="Amount" />
+                                <TableColumn fx:id="discountColumn" prefWidth="80.0" text="Discount" />
+                                <TableColumn fx:id="finalAmountColumn" prefWidth="100.0" text="Final Amount" />
+                                <TableColumn fx:id="paymentMethodColumn" prefWidth="90.0" text="Method" />
+                                <TableColumn fx:id="paymentTypeColumn" prefWidth="90.0" text="Type" />
+                                <TableColumn fx:id="statusColumn" prefWidth="90.0" text="Status" />
+                                <TableColumn fx:id="paymentDateColumn" prefWidth="150.0" text="Payment Date" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+
+                <!-- Right Panel: Payment Form -->
+                <VBox spacing="15.0" prefWidth="400.0" styleClass="form-panel">
+                    <children>
+                        <Label styleClass="section-title" text="💰 Payment Details">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+
+                        <ScrollPane fitToWidth="true" prefHeight="550.0" styleClass="form-scroll">
+                            <content>
+                                <VBox spacing="15.0">
+                                    <children>
+                                        <GridPane hgap="10.0" vgap="15.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints minWidth="120.0" />
+                                                <ColumnConstraints minWidth="220.0" />
+                                            </columnConstraints>
+
+                                            <Label text="Member: *" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                                                   styleClass="form-label" />
+                                            <ComboBox fx:id="memberComboBox" prefWidth="220.0"
+                                                      GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                                            <Label text="Amount: *" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                                                   styleClass="form-label" />
+                                            <TextField fx:id="amountField" promptText="Enter amount"
+                                                       GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                            <Label text="Discount:" GridPane.columnIndex="0" GridPane.rowIndex="2"
+                                                   styleClass="form-label" />
+                                            <HBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <children>
+                                                    <TextField fx:id="discountField" promptText="0.00" HBox.hgrow="ALWAYS" />
+                                                    <Button text="%%" onAction="#handleApplyDiscount"
+                                                            styleClass="secondary-button" />
+                                                </children>
+                                            </HBox>
+
+                                            <Label text="Final Amount:" GridPane.columnIndex="0" GridPane.rowIndex="3"
+                                                   styleClass="form-label" />
+                                            <TextField fx:id="finalAmountField" editable="false"
+                                                       promptText="0.00" styleClass="readonly-field"
+                                                       GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                                            <Label text="Payment Method:" GridPane.columnIndex="0" GridPane.rowIndex="4"
+                                                   styleClass="form-label" />
+                                            <ComboBox fx:id="paymentMethodComboBox" prefWidth="220.0"
+                                                      GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                                            <Label text="Payment Type:" GridPane.columnIndex="0" GridPane.rowIndex="5"
+                                                   styleClass="form-label" />
+                                            <ComboBox fx:id="paymentTypeComboBox" prefWidth="220.0"
+                                                      GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                                            <Label text="Status:" GridPane.columnIndex="0" GridPane.rowIndex="6"
+                                                   styleClass="form-label" />
+                                            <ComboBox fx:id="statusComboBox" prefWidth="220.0"
+                                                      GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                                            <Label text="Coupon Code:" GridPane.columnIndex="0" GridPane.rowIndex="7"
+                                                   styleClass="form-label" />
+                                            <TextField fx:id="couponCodeField" promptText="Optional"
+                                                       GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+                                            <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="8"
+                                                   styleClass="form-label" />
+                                            <TextArea fx:id="descriptionField" prefRowCount="4"
+                                                      promptText="Enter payment description or notes..."
+                                                      GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                        </GridPane>
+
+                                        <Separator />
+
+                                        <!-- Action Buttons -->
+                                        <VBox spacing="10.0">
+                                            <children>
+                                                <Label text="Actions:" styleClass="form-label">
+                                                    <font>
+                                                        <Font name="System Bold" size="12.0" />
+                                                    </font>
+                                                </Label>
+
+                                                <HBox spacing="10.0" alignment="CENTER">
+                                                    <children>
+                                                        <Button fx:id="addButton" onAction="#handleAdd"
+                                                                styleClass="success-button" text="💵 Record Payment"
+                                                                prefWidth="180.0" />
+                                                        <Button fx:id="updateStatusButton" onAction="#handleUpdateStatus"
+                                                                styleClass="primary-button" text="✏️ Update Status"
+                                                                disable="true" prefWidth="180.0" />
+                                                    </children>
+                                                </HBox>
+
+                                                <HBox spacing="10.0" alignment="CENTER">
+                                                    <children>
+                                                        <Button fx:id="refundButton" onAction="#handleRefund"
+                                                                styleClass="warning-button" text="↩️ Process Refund"
+                                                                disable="true" prefWidth="180.0" />
+                                                        <Button fx:id="deleteButton" onAction="#handleDelete"
+                                                                styleClass="danger-button" text="🗑️ Cancel Payment"
+                                                                disable="true" prefWidth="180.0" />
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+
+                                        <Separator />
+
+                                        <!-- Help Text -->
+                                        <VBox spacing="5.0" styleClass="help-section">
+                                            <children>
+                                                <Label text="ℹ️ Quick Tips:" styleClass="help-title">
+                                                    <font>
+                                                        <Font name="System Bold" size="11.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="• Fields marked with * are required" styleClass="help-text" />
+                                                <Label text="• Click '%' button to apply discount percentage" styleClass="help-text" />
+                                                <Label text="• Membership payments auto-extend membership" styleClass="help-text" />
+                                                <Label text="• Select a payment from table to update/refund" styleClass="help-text" />
+                                                <Label text="• Refunds can be partial or full amount" styleClass="help-text" />
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                            </padding>
+                                        </VBox>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+                                    </padding>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </VBox>
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </HBox>
+    </center>
+</BorderPane>
